@@ -29,24 +29,10 @@ function generatePassword() {
   var specialChar = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
 
-  /*pwdCriteriaString = criteriaStringGenerator(isLowerCase,lowerCase, pwdCriteriaString);
-  pwdCriteriaString = criteriaStringGenerator(isUpperCase,upperCase, pwdCriteriaString);
-  pwdCriteriaString = criteriaStringGenerator(isNumeric,numeric, pwdCriteriaString);
-  pwdCriteriaString = criteriaStringGenerator(isSpecial,specialChar, pwdCriteriaString);*/
-
-
-  if (isLowerCase) {
-    pwdCriteriaString = pwdCriteriaString + lowerCase;
-  }
-  if (isUpperCase) {
-    pwdCriteriaString = pwdCriteriaString + upperCase;
-  }
-  if (isNumeric) {
-    pwdCriteriaString = pwdCriteriaString + numeric;
-  }
-  if (isSpecial) {
-    pwdCriteriaString = pwdCriteriaString + specialChar;
-  }
+  pwdCriteriaString = criteriaStringGenerator(isLowerCase, lowerCase, pwdCriteriaString);
+  pwdCriteriaString = criteriaStringGenerator(isUpperCase, upperCase, pwdCriteriaString);
+  pwdCriteriaString = criteriaStringGenerator(isNumeric, numeric, pwdCriteriaString);
+  pwdCriteriaString = criteriaStringGenerator(isSpecial, specialChar, pwdCriteriaString);
 
 
   for (var i = 1; i <= pwdLength; i++) {
