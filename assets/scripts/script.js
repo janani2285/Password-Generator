@@ -27,29 +27,31 @@ function generatePassword() {
   var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var numeric = "0123456789";
   var specialChar = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-  
 
-  //pwdCriteriaString = criteriaStringGenerator(lowerCase,pwdCriteriaString);
-  if (lowerCase) {
+
+  /*pwdCriteriaString = criteriaStringGenerator(isLowerCase,lowerCase, pwdCriteriaString);
+  pwdCriteriaString = criteriaStringGenerator(isUpperCase,upperCase, pwdCriteriaString);
+  pwdCriteriaString = criteriaStringGenerator(isNumeric,numeric, pwdCriteriaString);
+  pwdCriteriaString = criteriaStringGenerator(isSpecial,specialChar, pwdCriteriaString);*/
+
+
+  if (isLowerCase) {
     pwdCriteriaString = pwdCriteriaString + lowerCase;
   }
-  if (upperCase) {
+  if (isUpperCase) {
     pwdCriteriaString = pwdCriteriaString + upperCase;
   }
-  if (numeric) {
+  if (isNumeric) {
     pwdCriteriaString = pwdCriteriaString + numeric;
   }
-  if (specialChar) {
+  if (isSpecial) {
     pwdCriteriaString = pwdCriteriaString + specialChar;
   }
 
 
   for (var i = 1; i <= pwdLength; i++) {
-    alert("inside for: " + i)
     var char = Math.floor(Math.random() * pwdCriteriaString.length + 1);
-
-    password += str.charAt(char);
-    alert("pwd:" + password);
+    password += pwdCriteriaString.charAt(char);
   }
 
   /*var isBlank = isBlankValidator(pwdLength);
@@ -71,10 +73,10 @@ function charTypeValidator() {
   return false;
 }
 
-function criteriaStringGenerator(isCriteria,pwdCriteriaString) {
+function criteriaStringGenerator(isCriteria, criteriaString, pwdCriteriaString) {
 
   if (isCriteria) {
-    pwdCriteriaString = pwdCriteriaString + lowerCase;
+    pwdCriteriaString = pwdCriteriaString + criteriaString;
   }
   return pwdCriteriaString;
 }
