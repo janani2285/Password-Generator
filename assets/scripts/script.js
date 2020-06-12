@@ -13,6 +13,7 @@ function generatePassword() {
 
   //Getting user input for pasword criteria
   var pwdLength = prompt("How many charaters should your password consists of?");
+  pwdLength = parseInt(pwdLength);
 
   var pwdCriteriaString = "";
   var password = "";
