@@ -50,20 +50,17 @@ function generatePassword() {
 
       //Checking for atleast one occurance of the user criteria
       if (isLowerCase) {
-        password = oneOccurance(/[a-z]/, lowerCase, password);
+        password = oneOccurance(/[a-z]/, lowerCase, password, pwdLength);
       }
 
       if (isNumeric) {
-        password = oneOccurance(/[0-9]/, numeric, password);
-
+        password = oneOccurance(/[0-9]/, numeric, password, pwdLength);
       }
       if (isUpperCase) {
-        password = oneOccurance(/[A-Z]/, upperCase, password);
-
+        password = oneOccurance(/[A-Z]/, upperCase, password, pwdLength);
       }
       if (isSpecial) {
-        password = oneOccurance(/[specialChar]/, specialChar, password);
-
+        password = oneOccurance(/[specialChar]/, specialChar, password, pwdLength);
       }
     } else {
       //Error Message
@@ -74,23 +71,29 @@ function generatePassword() {
 }
 
 //Function to check for atleast one occurance and replace if needed
-function oneOccurance(regExp, criteriaString, password) {
+function oneOccurance(regExp, criteriaString, password, userPwdLength) {
+
   if (!(regExp.test(password))) {
-    var charReplace = Math.floor(Math.random() * criteriaString.length);
-    password[password.length - 1] = charReplace;
+    var charReplace = criteriaString.charAt(Math.floor(Math.random() * criteriaString.length));
+    var randomIndex = Math.floor(Math.random() * userPwdLength);
+    password = replaceAt(password, randomIndex, charReplace);
   }
   return password;
 }
 
 //Function to generate criteria string
 function criteriaStringGenerator(isCriteria, criteriaString, pwdCriteriaString) {
-
   if (isCriteria) {
     pwdCriteriaString = pwdCriteriaString + criteriaString;
   }
   return pwdCriteriaString;
 }
 
-
+//Function to replace a character in a particular index
+function replaceAt(str, index, char) {
+  var arr = str.split("");
+  arr[index] = char;
+  return arr.join("");
+}
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
