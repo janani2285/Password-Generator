@@ -26,7 +26,7 @@ function generatePassword() {
   var lowerCase = "abcdefghijklmnopqrstuvwxyz";
   var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var numeric = "0123456789";
-  var specialChar = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+  var specialChar = "!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
 
   pwdCriteriaString = criteriaStringGenerator(isLowerCase, lowerCase, pwdCriteriaString);
@@ -42,7 +42,7 @@ function generatePassword() {
 
   /*var isBlank = isBlankValidator(pwdLength);
   if(isBlank){
-   pwdLength = prompt("Enter length of the password. Min: 8, Max:128 ");
+   pwdLength = prompt("Enter alength of the password. Min: 8, Max:128 ");
   }*/
 
   return password;
